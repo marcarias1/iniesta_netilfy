@@ -1,0 +1,64 @@
+.reading {
+  padding-block: 36px 75px;
+  max-width: 960px;
+}
+.reading .back-link { font-size: .77rem; color: #66745b; }
+.reading-header { max-width: 790px; margin: 43px auto 35px; }
+.reading-header > .category { margin-bottom: 20px; }
+.reading-header h1 { font-size: clamp(2.7rem, 5vw, 4.2rem); margin-bottom: 24px; }
+.reading .standfirst { font-size: 1.15rem; color: #626b5c; line-height: 1.8; }
+.reading-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  font-size: .73rem;
+  color: #68735f;
+  margin-top: 27px;
+}
+.reading-meta strong { font-weight: 600; color: #3c5034; }
+.reading-cover {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border: 1px solid #e2e4d7;
+  border-radius: 13px;
+}
+.reading-content { max-width: 730px; margin: 45px auto 0; }
+.reading-contact {
+  display: flex;
+  gap: 20px;
+  padding: 28px;
+  background: #f6f4df;
+  border: 1px solid #e5e3c9;
+  border-radius: 10px;
+  margin-block: 42px;
+}
+.reading-contact > svg { color: #75865e; flex: none; }
+.reading-contact h2 { font-family: var(--font-sans); font-size: 1rem; letter-spacing: 0; margin-bottom: 10px; }
+.reading-contact p { font-size: .83rem; color: #68725f; }
+.reading-contact .text-link { font-size: .78rem; }
+
+.external-resources {
+  margin-top: 3.5rem;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  background: #edf1e8;
+  border-radius: 1rem;
+}
+.external-resources h2 { margin: .5rem 0 1rem; font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.external-resources .resource-note { color: #4b584e; font-size: .9rem; line-height: 1.7; }
+.external-resources ul { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.external-resources li + li { border-top: 1px solid #cad3c7; margin-top: 1.25rem; padding-top: 1.25rem; }
+.external-resources a { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
+.external-resources .resource-url { display: block; overflow-wrap: anywhere; font-size: .8rem; margin: .5rem 0; color: #4b584e; }
+.external-resources small { display: block; color: #4b584e; font-size: .8rem; }
+
+@media (max-width: 760px) {
+  .reading { padding-top: 27px; }
+  .reading-header { margin-top: 33px; }
+  .reading-header h1 { font-size: 2.8rem; }
+  .reading .standfirst { font-size: 1rem; }
+  .reading-meta { font-size: .67rem; }
+  .reading-content { margin-top: 30px; }
+  .reading-contact { padding: 23px; gap: 15px; }
+}

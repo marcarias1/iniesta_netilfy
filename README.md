@@ -29,6 +29,16 @@ Astro genera cinco páginas informativas en `dist/`, además de las páginas de 
 
 El título se puede cambiar libremente en Decap. Las rutas se basan en el nombre del archivo: cambiar un título no rompe un enlace existente. La fecha principal debe ser una fecha YAML sin comillas (`date: 2026-10-19`); `externalLinks.fechaConsulta` es una cadena entre comillas (`fechaConsulta: "2026-10-19"`). El formateador del editor preserva esta distinción al guardar. Los recursos externos muestran su URL, descripción y fecha de consulta; esta última no garantiza disponibilidad futura. Actualízala solo tras revisar el recurso.
 
+### Escribir con vista previa
+
+1. Entra en `/admin/`, abre un artículo o pulsa **Crear una entrada de tipo Artículo**.
+2. Escribe en los campos de la izquierda. A la derecha verás el título, resumen, autoría, fecha, portada, contenido y recursos externos actualizados mientras editas.
+3. Puedes escribir el contenido en **Texto enriquecido**, sin conocer Markdown. La vista previa utiliza los mismos estilos y fuentes que la página del artículo.
+4. Si no ves la vista previa, pulsa el botón del **ojo** en el editor. Utiliza un ordenador o una pantalla ancha para trabajar con los dos paneles a la vez.
+5. Revisa el resultado antes de pulsar **Publicar**. La vista previa no guarda ni publica por sí sola; después de publicar, la web se actualiza cuando termina el despliegue de Netlify.
+
+La plantilla de vista previa está en `public/admin/preview.js`. Astro genera `/admin/preview.css` a partir de los estilos compartidos de la web; no hay que copiar CSS compilado ni mantener una segunda versión de la tipografía del artículo.
+
 ## Publicar en Netlify
 
 1. En Netlify, selecciona **Add new project → Import an existing project → GitHub** y autoriza el repositorio `marcarias1/iniesta_netilfy`.

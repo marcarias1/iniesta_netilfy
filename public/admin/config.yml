@@ -10,6 +10,9 @@ collections:
   - name: articulos
     label: Artículos
     label_singular: Artículo
+    description: "Escribe a la izquierda y revisa cómo quedará el artículo en la vista previa de la derecha. Ver la vista previa no publica tus cambios."
+    editor:
+      preview: true
     folder: src/content/articulos
     create: true
     delete: true

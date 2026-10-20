@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import '../styles/article.css';
 
 interface Props {
   links?: CollectionEntry<'articulos'>['data']['externalLinks'];
@@ -29,14 +30,3 @@ const dateFormat = new Intl.DateTimeFormat('es-ES', {
     </ul>
   </aside>
 )}
-
-<style>
-  .external-resources { margin-top: 3.5rem; padding: clamp(1.4rem, 4vw, 2.4rem); background: #edf1e8; border-radius: 1rem; }
-  h2 { margin: .5rem 0 1rem; font-size: clamp(1.6rem, 3vw, 2.1rem); }
-  .resource-note { color: #4b584e; font-size: .9rem; line-height: 1.7; }
-  ul { list-style: none; padding: 0; margin: 1.5rem 0 0; }
-  li + li { border-top: 1px solid #cad3c7; margin-top: 1.25rem; padding-top: 1.25rem; }
-  a { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
-  .resource-url { display: block; overflow-wrap: anywhere; font-size: .8rem; margin: .5rem 0; color: #4b584e; }
-  small { display: block; color: #4b584e; font-size: .8rem; }
-</style>

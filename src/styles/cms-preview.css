@@ -1,0 +1,21 @@
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/600.css";
+@import "@fontsource/dm-sans/700.css";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "./global.css";
+@import "./article.css";
+
+.preview-notice {
+  padding: 14px 20px;
+  background: #fef9c3;
+  border-bottom: 1px solid #e5dfad;
+  color: #263d2b;
+  font-size: .8rem;
+  line-height: 1.6;
+}
+.preview-notice strong { display: block; }
+.preview-brand { margin-top: 24px; font-size: 1.2rem; font-weight: 700; letter-spacing: -.05em; }
+.preview-guidance { padding: 20px; border: 1px dashed #a6b596; border-radius: 10px; color: #596158; font-size: .9rem; }
+.reading { overflow-wrap: anywhere; }
