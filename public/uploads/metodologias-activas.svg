@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <title>Construir una idea entre todas las personas</title>
+  <desc>Formas geométricas de madera, una lupa y tarjetas conectadas representan un pequeño proyecto de aprendizaje cooperativo.</desc>
+  <rect width="960" height="640" fill="#F2E6D7"/>
+  <path d="M148 168C210 67 402 46 508 98C615 150 580 241 705 275C830 309 879 411 794 496C709 581 541 554 426 557C311 560 169 531 124 426C79 321 86 269 148 168Z" fill="#E1E5D4"/>
+  <ellipse cx="498" cy="542" rx="302" ry="23" fill="#CCCDB7"/>
+  <rect x="281" y="426" width="183" height="110" rx="4" fill="#BF7959"/>
+  <path d="M372 311L481 426H263Z" fill="#DFB970"/>
+  <rect x="482" y="379" width="112" height="157" rx="4" fill="#8E9F7C"/>
+  <path d="M491 369C491 343 512 322 538 322C564 322 585 343 585 369Z" fill="#52694B"/>
+  <rect x="612" y="455" width="94" height="81" rx="4" fill="#E6CC99"/>
+  <path d="M372 311V239H525" stroke="#69795A" stroke-width="3" stroke-dasharray="8 8"/>
+  <path d="M593 397H675V304" stroke="#69795A" stroke-width="3" stroke-dasharray="8 8"/>
+  <g transform="rotate(9 642 216)">
+    <rect x="550" y="131" width="174" height="146" rx="9" fill="#FFFCF1"/>
+    <circle cx="596" cy="174" r="15" fill="#D4AD70"/>
+    <path d="M580 217H689M580 238H664M629 170H689M629 185H673" stroke="#A3AD91" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(-12 267 205)">
+    <rect x="199" y="143" width="140" height="111" rx="8" fill="#FCF6D2"/>
+    <path d="M224 180H312M224 201H295M224 222H305" stroke="#B4885E" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <circle cx="735" cy="355" r="44" fill="#FFFCF1" fill-opacity=".6" stroke="#52694B" stroke-width="10"/>
+  <path d="M766 390L807 437" stroke="#52694B" stroke-width="17" stroke-linecap="round"/>
+  <path d="M714 351L730 366L756 338" stroke="#BF7959" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M161 359V390M145 375H177" stroke="#BF7959" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="430" cy="165" r="7" fill="#BF7959"/>
+  <circle cx="820" cy="225" r="5" fill="#52694B"/>
+</svg>

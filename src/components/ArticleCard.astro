@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+interface Props { article: CollectionEntry<'articulos'>; }
+const { article } = Astro.props;
+const { title, description, thumbnail, category, date } = article.data;
+---
+<article class="article-card" data-article data-search={`${title} ${description} ${category}`} data-category={category}>
+  <a class="article-image" href={`/blog/${article.id}/`} tabindex="-1" aria-hidden="true"><img src={thumbnail} alt="" width="640" height="366" loading="lazy" /></a>
+  <div class="article-body">
+    <span class="category">{category}</span>
+    <h3><a href={`/blog/${article.id}/`}>{title}</a></h3>
+    <p>{description}</p>
+    <div class="article-meta"><time datetime={date.toISOString()}>{date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })}</time><a href={`/blog/${article.id}/`} aria-label={`Leer: ${title}`}><Icon name="arrow" size={18} /></a></div>
+  </div>
+</article>

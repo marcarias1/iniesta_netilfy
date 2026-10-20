@@ -1,0 +1,79 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: es
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: articulos
+    label: Artículos
+    label_singular: Artículo
+    folder: src/content/articulos
+    create: true
+    delete: true
+    extension: md
+    format: pedagogo-frontmatter
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} · {{category}}"
+    fields:
+      - { label: Título, name: title, widget: string }
+      - {
+          label: Descripción,
+          name: description,
+          widget: text,
+          hint: "Un resumen breve y útil para las tarjetas y los buscadores.",
+        }
+      - { label: Autoría, name: author, widget: string }
+      - {
+          label: Imagen de portada,
+          name: thumbnail,
+          widget: image,
+          choose_url: false,
+        }
+      - label: Fecha de publicación
+        name: date
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        picker_utc: true
+        hint: "Solo fecha. Se guarda como fecha YAML sin hora (AAAA-MM-DD)."
+      - label: Categoría
+        name: category
+        widget: select
+        options:
+          - Orientación Laboral
+          - Competencias Docentes
+          - Metodologías Activas
+          - Pedagogía Social
+      - label: Recursos externos
+        name: externalLinks
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.title}}"
+        fields:
+          - label: Título y descripción del recurso
+            name: title
+            widget: string
+            hint: "Indica la entidad y para qué sirve este recurso."
+          - label: URL
+            name: url
+            widget: string
+            pattern:
+              [
+                '^https?://[^\s]+$',
+                "Introduce una URL completa que empiece por https:// o http://.",
+              ]
+          - label: Fecha de consulta
+            name: fechaConsulta
+            widget: string
+            pattern:
+              [
+                '^\d{4}-\d{2}-\d{2}$',
+                "Introduce la fecha con formato AAAA-MM-DD.",
+              ]
+            hint: "Fecha en que abriste y revisaste el recurso (AAAA-MM-DD). No acredita su disponibilidad futura."
+      - { label: Contenido, name: body, widget: markdown }

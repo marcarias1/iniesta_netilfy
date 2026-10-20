@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Icon from '../../components/Icon.astro';
+const articles = (await getCollection('articulos')).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
+const categories = ['Orientación Laboral', 'Competencias Docentes', 'Metodologías Activas', 'Pedagogía Social'];
+---
+<Layout title="Artículos y recursos" description="Orientación laboral, competencias docentes y metodologías activas: artículos prácticos para descubrir las posibilidades de la pedagogía.">
+  <div class="container">
+    <header class="page-intro"><span class="eyebrow">CONOCIMIENTO QUE SE COMPARTE</span><h1>Ideas para aprender.<br /><span class="muted">Recursos para transformar.</span></h1><p>Una mirada práctica y cercana a la pedagogía. Explora, encuentra tu tema y sigue construyendo tu camino.</p></header>
+    {articles.length === 0 && <section class="panel catalogue" aria-label="Artículos"><h2>Todavía no hay artículos publicados</h2><p class="muted">Aquí encontrarás las publicaciones de PedaGoGo.</p></section>}
+    <section aria-label="Catálogo de artículos" class="catalogue" hidden={articles.length === 0}>
+      <form class="search-bar" role="search" id="article-search" hidden><div class="search-field"><Icon name="search" size={20} /><label for="search" class="sr-only">Buscar por título, descripción o categoría</label><input id="search" type="search" placeholder="¿Qué te gustaría descubrir?" autocomplete="off" /></div><div class="category-field"><label for="category">Explora por tema</label><select id="category"><option value="">Todos los temas</option>{categories.map(category => <option value={category}>{category}</option>)}</select></div></form>
+      <noscript><p class="panel">Puedes leer todos los artículos a continuación. Activa JavaScript para buscar y filtrar por tema.</p></noscript>
+      <div class="catalogue-meta"><p id="result-count" role="status" aria-live="polite">{articles.length} artículos para seguir creciendo</p><span>Lectura libre. Siempre.</span></div>
+      <div class="article-grid" id="articles">{articles.map(article => <ArticleCard article={article} />)}</div>
+      <div class="empty panel" id="no-results" hidden><Icon name="search" size={32} /><h2>No hemos encontrado ese tema</h2><p>Prueba con otras palabras o selecciona otra categoría.</p><button class="button secondary" id="reset-search" type="button">Ver todos los artículos</button></div>
+    </section>
+    <aside class="topic-suggestion"><Icon name="chat" size={24} /><div><h2>¿Echas en falta algún tema?</h2><p>Este espacio también se construye con tus preguntas.</p></div><a href="/contacto/" class="text-link">Cuéntanoslo <Icon name="arrow" size={17} /></a></aside>
+  </div>
+</Layout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('#article-search')!;
+  const input = document.querySelector<HTMLInputElement>('#search')!;
+  const category = document.querySelector<HTMLSelectElement>('#category')!;
+  const count = document.querySelector<HTMLElement>('#result-count')!;
+  const empty = document.querySelector<HTMLElement>('#no-results')!;
+  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es').trim();
+  const articles = Array.from(document.querySelectorAll<HTMLElement>('[data-article]')).map(element => ({ element, search: normalize(element.dataset.search || ''), category: element.dataset.category }));
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get('categoria');
+  if (initial && Array.from(category.options).some(option => option.value === initial)) category.value = initial;
+  input.value = params.get('q') || '';
+  function filter() {
+    const words = normalize(input.value).split(/\s+/).filter(Boolean);
+    let matches = 0;
+    for (const article of articles) {
+      const visible = (!category.value || article.category === category.value) && words.every(word => article.search.includes(word));
+      article.element.hidden = !visible;
+      if (visible) matches++;
+    }
+    count.textContent = `${matches} ${matches === 1 ? 'artículo encontrado' : 'artículos encontrados'}`;
+    empty.hidden = matches !== 0;
+    const url = new URL(window.location.href);
+    input.value.trim() ? url.searchParams.set('q', input.value.trim()) : url.searchParams.delete('q');
+    category.value ? url.searchParams.set('categoria', category.value) : url.searchParams.delete('categoria');
+    window.history.replaceState(null, '', url);
+  }
+  form.hidden = false;
+  form.addEventListener('submit', event => { event.preventDefault(); filter(); });
+  input.addEventListener('input', filter);
+  category.addEventListener('change', filter);
+  document.querySelector('#reset-search')?.addEventListener('click', () => { input.value = ''; category.value = ''; filter(); input.focus(); });
+  filter();
+</script>
+<style>
+.catalogue{padding-bottom:65px}.search-bar{display:flex;align-items:center;gap:25px;padding:21px;background:#f3f3e8;border:1px solid #e4e5d8;border-radius:10px}.search-field{display:flex;align-items:center;gap:13px;background:white;border:1px solid #d8ddce;border-radius:6px;padding:13px 16px;flex:1;color:#6a765d}.search-field input{width:100%;border:0;outline:0;background:transparent;color:#18251e;font-size:.86rem}.search-field:focus-within{outline:3px solid #83601b;outline-offset:2px}.search-field input:focus-visible{outline:0}.category-field{display:flex;align-items:center;gap:14px}.category-field label{font-size:.74rem;color:#637056}.category-field select{border:1px solid #d8ddce;border-radius:6px;background:white;color:#35472f;padding:13px;font-size:.8rem;max-width:230px}.catalogue-meta{display:flex;align-items:center;justify-content:space-between;font-size:.73rem;color:#69725f;padding-block:25px}.catalogue-meta p{margin-bottom:0}.catalogue-meta>span{font-size:.66rem}.empty{text-align:center;padding:55px 25px;background:#f6f7ee}.empty>svg{margin:0 auto 20px}.empty h2{font-size:2rem}.empty p{color:#65705c}.topic-suggestion{display:flex;align-items:center;gap:20px;border-top:1px solid #dfe3d6;padding:35px 0 60px}.topic-suggestion>svg{color:#71815b}.topic-suggestion h2{font-family:var(--font-sans);font-size:.95rem;letter-spacing:0;margin-bottom:5px}.topic-suggestion p{font-size:.8rem;color:#6d7463;margin-bottom:0}.topic-suggestion .text-link{margin-left:auto;font-size:.78rem}
+@media(max-width:760px){.search-bar{flex-direction:column;align-items:stretch;padding:15px;gap:14px}.category-field{justify-content:space-between}.category-field select{max-width:65%}.catalogue-meta>span{display:none}.topic-suggestion{flex-wrap:wrap;gap:16px}.topic-suggestion>div{flex:1}.topic-suggestion .text-link{margin-left:44px}.catalogue{padding-bottom:45px}}
+</style>

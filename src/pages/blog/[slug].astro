@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ExternalLinks from '../../components/ExternalLinks.astro';
+import Icon from '../../components/Icon.astro';
+export async function getStaticPaths() {
+  const articles = await getCollection('articulos');
+  return articles.map(article => ({ params: { slug: article.id }, props: { article } }));
+}
+interface Props { article: CollectionEntry<'articulos'>; }
+const { article } = Astro.props;
+const { Content } = await render(article);
+const { title, description, author, category, date, thumbnail, externalLinks } = article.data;
+const minutes = Math.max(1, Math.ceil((article.body || '').split(/\s+/).length / 200));
+---
+<Layout title={title} description={description}>
+  <article class="reading container">
+    <a class="back-link" href="/blog/">← Todos los artículos</a>
+    <header class="reading-header"><a class="category" href={`/blog/?categoria=${encodeURIComponent(category)}`}>{category}</a><h1>{title}</h1><p class="standfirst">{description}</p><div class="reading-meta"><span>Por <strong>{author}</strong></span><span aria-hidden="true">·</span><time datetime={date.toISOString()}>{date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })}</time><span aria-hidden="true">·</span><span>{minutes} min de lectura</span></div></header>
+    <img class="reading-cover" src={thumbnail} alt="" width="900" height="500" fetchpriority="high" />
+    <div class="reading-content"><div class="prose prose-slate"><Content /></div><ExternalLinks links={externalLinks} /><aside class="reading-contact"><Icon name="chat" size={27} /><div><h2>Seguimos aprendiendo contigo</h2><p>¿Tienes una pregunta o una aportación sobre este artículo?</p><a class="text-link" href="/contacto/">Escríbenos <Icon name="arrow" size={16} /></a></div></aside><a class="text-link" href="/blog/">← Seguir explorando artículos</a></div>
+  </article>
+</Layout>
+<style>
+.reading{padding-block:36px 75px;max-width:960px}.back-link{font-size:.77rem;color:#66745b}.reading-header{max-width:790px;margin:43px auto 35px}.reading-header>.category{margin-bottom:20px}.reading-header h1{font-size:clamp(2.7rem,5vw,4.2rem);margin-bottom:24px}.standfirst{font-size:1.15rem;color:#626b5c;line-height:1.8}.reading-meta{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;font-size:.73rem;color:#68735f;margin-top:27px}.reading-meta strong{font-weight:600;color:#3c5034}.reading-cover{width:100%;max-height:450px;object-fit:cover;border:1px solid #e2e4d7;border-radius:13px}.reading-content{max-width:730px;margin:45px auto 0}.reading-contact{display:flex;gap:20px;padding:28px;background:#f6f4df;border:1px solid #e5e3c9;border-radius:10px;margin-block:42px}.reading-contact>svg{color:#75865e;flex:none}.reading-contact h2{font-family:var(--font-sans);font-size:1rem;letter-spacing:0;margin-bottom:10px}.reading-contact p{font-size:.83rem;color:#68725f}.reading-contact .text-link{font-size:.78rem}
+@media(max-width:760px){.reading{padding-top:27px}.reading-header{margin-top:33px}.reading-header h1{font-size:2.8rem}.standfirst{font-size:1rem}.reading-meta{font-size:.67rem}.reading-content{margin-top:30px}.reading-contact{padding:23px;gap:15px}}
+</style>

@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contacto" description="Contacta con PedaGoGo por correo electrónico, Instagram o teléfono.">
+  <section class="container page-intro">
+    <p class="eyebrow">HABLEMOS DE PEDAGOGÍA</p>
+    <h1>Al otro lado,<br /><span class="muted">personas.</span></h1>
+    <p>Puedes ponerte en contacto con PedaGoGo por correo, Instagram o teléfono.</p>
+  </section>
+
+  <section class="container contact-methods" aria-label="Datos de contacto">
+    <div class="panel contact-method">
+      <span class="method-label">CORREO ELECTRÓNICO</span>
+      <a href="mailto:pedaGoGo@hotmail.com">pedaGoGo@hotmail.com <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="panel contact-method">
+      <span class="method-label">INSTAGRAM</span>
+      <a href="https://www.instagram.com/pedagogo/" target="_blank" rel="noopener noreferrer">@PEDAGOGO <span aria-hidden="true">↗</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+    </div>
+    <div class="panel contact-method">
+      <span class="method-label">TELÉFONO</span>
+      <a href="tel:+34678492350">678 492 350 <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    padding-bottom: 80px;
+  }
+  .contact-method {
+    background: #f5f5e8;
+    padding-block: 32px;
+  }
+  .method-label {
+    display: block;
+    margin-bottom: 20px;
+    color: #59684e;
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+  .contact-method a {
+    font-size: .95rem;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+  }
+  .contact-method a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  .contact-method a > span[aria-hidden] { margin-left: 8px; }
+  @media (max-width: 850px) {
+    .contact-methods { grid-template-columns: 1fr; gap: 16px; padding-bottom: 52px; }
+  }
+</style>

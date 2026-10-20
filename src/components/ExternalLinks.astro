@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  links?: CollectionEntry<'articulos'>['data']['externalLinks'];
+}
+
+const { links = [] } = Astro.props;
+const dateFormat = new Intl.DateTimeFormat('es-ES', {
+  day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC',
+});
+---
+
+{links.length > 0 && (
+  <aside class="external-resources" aria-label="Recursos externos y fuentes consultadas">
+    <p class="eyebrow">Lluminositat · Para seguir explorando</p>
+    <h2>Recursos y fuentes</h2>
+    <p class="resource-note">La fecha indica cuándo consultamos el recurso, no garantiza que siga disponible ni que su contenido no haya cambiado. Los enlaces se abren en una pestaña nueva.</p>
+    <ul>
+      {links.map((link) => (
+        <li>
+          <a href={link.url} target="_blank" rel="external noopener noreferrer">
+            {link.title}<span aria-hidden="true"> ↗</span>
+          </a>
+          <span class="resource-url">{link.url}</span>
+          <small>Consultado el <time datetime={link.fechaConsulta}>{dateFormat.format(new Date(`${link.fechaConsulta}T00:00:00Z`))}</time></small>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+<style>
+  .external-resources { margin-top: 3.5rem; padding: clamp(1.4rem, 4vw, 2.4rem); background: #edf1e8; border-radius: 1rem; }
+  h2 { margin: .5rem 0 1rem; font-size: clamp(1.6rem, 3vw, 2.1rem); }
+  .resource-note { color: #4b584e; font-size: .9rem; line-height: 1.7; }
+  ul { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+  li + li { border-top: 1px solid #cad3c7; margin-top: 1.25rem; padding-top: 1.25rem; }
+  a { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
+  .resource-url { display: block; overflow-wrap: anywhere; font-size: .8rem; margin: .5rem 0; color: #4b584e; }
+  small { display: block; color: #4b584e; font-size: .8rem; }
+</style>

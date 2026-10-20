@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const questions = [
+  {
+    label: '¿Qué es la Pedagogía y qué se estudia en la carrera?',
+    answer: 'La Pedagogía estudia cómo aprendemos y cómo mejorar los procesos educativos a lo largo de la vida. La carrera combina fundamentos de educación, psicología y sociología con investigación, orientación, evaluación y diseño de proyectos. Las asignaturas y las prácticas dependen de cada universidad.',
+  },
+  {
+    label: '¿Cómo puedo acceder al grado en Pedagogía?',
+    answer: 'En España existen distintas vías de acceso, como Bachillerato y la prueba de acceso a la universidad, ciclos formativos de grado superior o las pruebas para mayores de 25, 40 y 45 años, según sus requisitos. Consulta las vías, plazas, plazos y notas de admisión vigentes en la universidad que te interese: no hay una única nota de corte para toda España.',
+  },
+  {
+    label: '¿Qué salidas laborales tiene la Pedagogía?',
+    answer: 'Hay ámbitos de trabajo en orientación educativa, formación en organizaciones, diseño y evaluación de proyectos, intervención socioeducativa, recursos educativos y aprendizaje digital. Las funciones y los requisitos cambian según el puesto y su convocatoria. El título no garantiza un empleo ni habilita por sí solo para cualquier profesión educativa.',
+  },
+  {
+    label: '¿Puedo trabajar como docente con el título de Pedagogía?',
+    answer: 'Depende de la etapa, la especialidad y el sistema de acceso. El grado en Pedagogía no sustituye a los títulos habilitantes de Maestro en Educación Infantil o Primaria. Para determinadas vías de secundaria puede exigirse el Máster de Formación del Profesorado, además de otros requisitos. Comprueba siempre la normativa vigente y las bases concretas de la convocatoria.',
+  },
+  {
+    label: '¿Qué competencias desarrolla una persona pedagoga?',
+    answer: 'Entre ellas están analizar necesidades educativas, diseñar experiencias de aprendizaje, orientar, coordinar proyectos, elaborar materiales y evaluar procesos. La escucha, el pensamiento crítico, la comunicación, la colaboración y el compromiso ético son parte importante de esa práctica. Las competencias concretas se desarrollan con formación y experiencia.',
+  },
+  {
+    label: '¿Pedagogía y Psicología son lo mismo?',
+    answer: 'No. Son disciplinas distintas que pueden colaborar. La Pedagogía se centra en los procesos educativos, sus contextos y su mejora. La Psicología estudia el comportamiento y los procesos mentales. El título de Pedagogía no habilita para el diagnóstico clínico ni para ejercer profesiones sanitarias reguladas.',
+  },
+  {
+    label: '¿PedaGoGo ofrece orientación individual o una bolsa de empleo?',
+    answer: 'Compartimos información general para acercarte a la profesión. Si necesitas aclarar una información, puedes escribirnos por correo o contactar por Instagram o teléfono. Para decisiones académicas o requisitos profesionales, consulta también a la universidad o al organismo competente.',
+  },
+];
+---
+
+<Layout title="Preguntas frecuentes" description="Resuelve dudas sobre la carrera de Pedagogía, sus salidas laborales, competencias y requisitos docentes.">
+  <section class="container page-intro faq-intro">
+    <p class="eyebrow">PREGUNTAR TAMBIÉN ES APRENDER</p>
+    <h1>Grandes preguntas.<br /><span>Respuestas claras.</span></h1>
+    <p class="intro-copy">La Pedagogía despierta muchas dudas. Empecemos por las que más nos ayudan a conocerla, sin rodeos ni letra pequeña.</p>
+  </section>
+
+  <section class="container faq-layout" aria-labelledby="faq-title">
+    <div class="faq-aside">
+      <span class="chapter">01 / LO ESENCIAL</span>
+      <h2 id="faq-title">Un buen punto<br />de partida.</h2>
+      <p>Información general para orientarte. Los requisitos oficiales pueden cambiar: contrástalos siempre con su fuente.</p>
+      <span class="little-flower" aria-hidden="true"><svg width="68" height="68" viewBox="0 0 68 68" fill="none"><path d="M34 5v58M5 34h58M13 13l42 42m-42 0 42-42" stroke="currentColor" stroke-width="5" stroke-linecap="round" /></svg></span>
+    </div>
+    <div class="questions">
+      {questions.map((question, index) => (
+        <details class="faq-item">
+          <summary><span class="question-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{question.label}</span><span class="toggle" aria-hidden="true">+</span></summary>
+          <div class="faq-answer"><p>{question.answer}</p></div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="container faq-end">
+    <h2>Las buenas conversaciones<br />empiezan con una pregunta.</h2>
+    <a class="button" href="/contacto/">Hablemos <span aria-hidden="true">↗</span></a>
+  </section>
+</Layout>
+
+<style>
+  .faq-intro { padding-bottom: 4.5rem; }
+  h1 { max-width: 850px; font-size: clamp(2.9rem, 5.8vw, 5.1rem); line-height: 1.08; letter-spacing: -.045em; margin: 1.2rem 0 1.5rem; }
+  h1 span { color: #68735c; }
+  .intro-copy { max-width: 575px; font-size: 1.1rem; line-height: 1.8; }
+  .faq-layout { display: grid; grid-template-columns: .8fr 1.7fr; gap: 5rem; padding-bottom: 2rem; }
+  .chapter { font-size: .7rem; font-weight: 700; letter-spacing: .13em; }
+  .faq-aside h2 { font-size: 2.2rem; line-height: 1.18; margin: 1.3rem 0; }
+  .faq-aside p { font-size: .94rem; color: #667064; line-height: 1.8; max-width: 255px; }
+  .little-flower { display: inline-block; font-size: 5rem; line-height: 1; color: #75835e; margin-top: 1.5rem; }
+  .questions { border-top: 1px solid #d8ddd1; }
+  .faq-item { border-bottom: 1px solid #d8ddd1; }
+  summary { display: flex; align-items: baseline; gap: 1rem; padding: 1.55rem 0; cursor: pointer; font-weight: 600; line-height: 1.5; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  .question-number { flex: 0 0 1.6rem; font-size: .7rem; font-weight: 400; color: #7b8275; }
+  .toggle { margin-left: auto; font-size: 1.4rem; font-weight: 400; flex-shrink: 0; transition: transform .2s; }
+  details[open] .toggle { transform: rotate(45deg); }
+  .faq-answer { padding: 0 2.4rem 1.5rem 2.6rem; color: #596456; line-height: 1.85; font-size: .95rem; }
+  .faq-answer p { margin: 0; }
+  .faq-end { padding-top: 1rem; padding-bottom: 6rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .faq-end h2 { font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 500; line-height: 1.25; margin: 0; }
+  .faq-end .button { white-space: nowrap; }
+  summary:focus-visible { outline: 3px solid #687a43; outline-offset: 4px; }
+  @media (max-width: 850px) {
+    .faq-layout { gap: 2rem; grid-template-columns: 1fr; }
+    .faq-aside p { max-width: 500px; }
+    .faq-aside h2 br { display: none; }
+    .little-flower { display: none; }
+  }
+  @media (max-width: 520px) {
+    .faq-intro { padding-bottom: 3rem; }
+    .faq-answer { padding-left: 0; padding-right: .5rem; }
+    summary { gap: .65rem; font-size: .94rem; }
+    .faq-end { align-items: flex-start; flex-direction: column; padding-bottom: 4rem; }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/dm-sans/700.css';
+import '@fontsource/fraunces/400.css';
+import '@fontsource/fraunces/500.css';
+interface Props { title: string; description?: string; }
+const { title, description = 'La pedagogía tiene mucho que aportar. Descubre recursos, salidas profesionales y respuestas para construir tu camino con PedaGoGo. Independiente, accesible y sin publicidad.' } = Astro.props;
+const nav = [{ href: '/', label: 'Inicio' }, { href: '/blog/', label: 'Artículos' }, { href: '/faq/', label: 'Preguntas frecuentes' }, { href: '/sobre-nosotros/', label: 'Sobre nosotros' }];
+const active = (href: string) => href === '/' ? Astro.url.pathname === '/' : Astro.url.pathname.startsWith(href);
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FEF9C3" />
+    <meta property="og:title" content={`${title} · PedaGoGo`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <title>{title} · PedaGoGo</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="topbar"><div class="container topbar-inner"><span>Independientes. Sin ánimo de lucro. <strong>Con mucho que aportar.</strong></span><a href="mailto:pedaGoGo@hotmail.com">pedaGoGo@hotmail.com <span aria-hidden="true">↗</span></a></div></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="brand" aria-label="PedaGoGo · Inicio"><span class="brand-symbol" aria-hidden="true">p<span>g</span></span><span>PedaGoGo<span class="brand-dot">.</span></span></a>
+        <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menú <span aria-hidden="true">☰</span></button>
+        <nav id="main-navigation" aria-label="Navegación principal">
+          {nav.map(({ href, label }) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}
+          <a class="nav-contact" href="/contacto/" aria-current={active('/contacto/') ? 'page' : undefined}>Contacto <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+    <main id="contenido"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><a href="/" class="brand">PedaGoGo<span class="brand-dot">.</span></a><p>La pedagogía se mueve.<br />Y queremos moverla contigo.</p><span class="footer-pill">Sin publicidad. Con propósito.</span></div>
+        <div><h2>Explora</h2><a href="/blog/">Artículos y recursos</a><a href="/faq/">Preguntas frecuentes</a><a href="/sobre-nosotros/">Sobre nosotros</a><a href="/contacto/">Contacto</a></div>
+        <div><h2>Estamos al otro lado</h2><a href="mailto:pedaGoGo@hotmail.com">pedaGoGo@hotmail.com ↗</a><a href="https://www.instagram.com/pedagogo/" target="_blank" rel="noopener noreferrer">@PEDAGOGO ↗</a><a href="tel:+34678492350">678 492 350</a></div>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} PedaGoGo · Asociación independiente y sin ánimo de lucro.</span><span>Hecho para compartir conocimiento.</span></div>
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('#menu-toggle');
+      const navigation = document.querySelector<HTMLElement>('#main-navigation');
+      toggle?.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(expanded));
+        navigation?.classList.toggle('is-open', expanded);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+          toggle.setAttribute('aria-expanded', 'false');
+          navigation?.classList.remove('is-open');
+          toggle.focus();
+        }
+      });
+    </script>
+    <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('login', function () {
+          window.location.assign('/admin/');
+        });
+      }
+    </script>
+  </body>
+</html>

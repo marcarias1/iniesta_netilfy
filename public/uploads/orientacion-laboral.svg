@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <title>Un camino abierto a nuevas posibilidades</title>
+  <desc>Ilustración editorial de una escalera, una puerta de arco, un cuaderno y una planta en colores crema, verde y terracota.</desc>
+  <rect width="960" height="640" fill="#F0E8D8"/>
+  <circle cx="770" cy="137" r="154" fill="#E6D69E"/>
+  <path d="M0 469C164 396 252 491 399 457C580 415 688 426 960 498V640H0Z" fill="#D5DDCB"/>
+  <path d="M386 425V202C386 128 446 68 520 68S654 128 654 202V425Z" fill="#A9B79B"/>
+  <path d="M426 425V207C426 155 468 113 520 113S614 155 614 207V425Z" fill="#FFF9E9"/>
+  <path d="M426 425L543 311H614V425Z" fill="#EAD6B7"/>
+  <path d="M331 496V450H404V407H477V364H550V321H625V496Z" fill="#C1795B"/>
+  <path d="M331 450H404M404 407H477M477 364H550M550 321H625" stroke="#89533D" stroke-width="3"/>
+  <path d="M669 506H802L783 593H688Z" fill="#B66F50"/>
+  <path d="M735 508V339" stroke="#425F45" stroke-width="7" stroke-linecap="round"/>
+  <path d="M736 420C683 423 661 386 667 357C712 357 738 377 736 420Z" fill="#758B66"/>
+  <path d="M737 383C789 386 813 350 810 321C765 319 736 340 737 383Z" fill="#425F45"/>
+  <path d="M737 470C790 472 819 439 819 412C774 405 744 426 737 470Z" fill="#758B66"/>
+  <g transform="rotate(-12 249 476)">
+    <rect x="159" y="367" width="167" height="208" rx="7" fill="#FFFDF1"/>
+    <rect x="159" y="367" width="19" height="208" rx="4" fill="#52664B"/>
+    <path d="M204 418H285M204 438H266M204 503H286M204 522H254" stroke="#A7AF99" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="221" cy="473" r="12" fill="#D39A6C"/>
+  </g>
+  <path d="M116 210H211M185 184L211 210L185 236" stroke="#52664B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M734 220V249M720 234H749" stroke="#FFF9E9" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="293" cy="112" r="5" fill="#B66F50"/>
+  <circle cx="845" cy="527" r="5" fill="#B66F50"/>
+</svg>

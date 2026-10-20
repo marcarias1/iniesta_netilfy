@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Administración · PedaGoGo</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <noscript
+      >Activa JavaScript para acceder al editor de artículos de
+      PedaGoGo.</noscript
+    >
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script>
+      // Astro expects a YAML date for publication, but strings for consultation dates.
+      // Decap's default YAML 1.2 writer does not preserve that distinction.
+      const dateOnly = new jsyaml.Type("tag:yaml.org,2002:timestamp", {
+        kind: "scalar",
+        instanceOf: Date,
+        resolve: (value) => /^\d{4}-\d{2}-\d{2}$/.test(value),
+        represent: (value) => value.toISOString().slice(0, 10),
+      });
+      const outputSchema = jsyaml.DEFAULT_SCHEMA.extend({
+        implicit: [dateOnly],
+      });
+      CMS.registerCustomFormat("pedagogo-frontmatter", "md", {
+        fromFile(text) {
+          const match = text.match(
+            /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/,
+          );
+          if (!match)
+            throw new Error(
+              "El artículo debe contener una cabecera YAML entre líneas --- .",
+            );
+          return { ...jsyaml.load(match[1]), body: match[2] };
+        },
+        toFile(data) {
+          const { body = "", ...metadata } = data;
+          metadata.date = new Date(
+            metadata.date instanceof Date
+              ? metadata.date.toISOString()
+              : `${String(metadata.date).slice(0, 10)}T00:00:00Z`,
+          );
+          const frontmatter = jsyaml.dump(metadata, {
+            schema: outputSchema,
+            forceQuotes: true,
+            quotingType: '"',
+            lineWidth: -1,
+            noRefs: true,
+          });
+          return `---\n${frontmatter}---\n${body}`;
+        },
+      });
+      CMS.init();
+    </script>
+  </body>
+</html>

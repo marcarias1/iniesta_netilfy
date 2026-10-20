@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" fill="none">
+  <title>Ideas que crecen entre páginas</title>
+  <desc>Un libro abierto, una pequeña planta y formas de conversación ilustran el aprendizaje docente compartido.</desc>
+  <rect width="960" height="640" fill="#E4E9DB"/>
+  <circle cx="460" cy="303" r="230" fill="#F7F0D9"/>
+  <ellipse cx="481" cy="536" rx="297" ry="28" fill="#C9D1BF"/>
+  <path d="M210 338C302 314 393 332 480 372C567 332 658 314 750 338V498C650 482 562 498 480 535C398 498 310 482 210 498Z" fill="#56694F"/>
+  <path d="M228 318C316 305 398 323 480 362V517C401 479 318 465 228 480Z" fill="#FFFCF2"/>
+  <path d="M480 362C562 323 644 305 732 318V480C642 465 559 479 480 517Z" fill="#F5E7C9"/>
+  <path d="M480 366V516" stroke="#D5BD94" stroke-width="3"/>
+  <path d="M268 362C323 359 374 370 429 391M268 391C323 388 374 399 429 420M268 420C323 417 363 426 401 439M532 391C586 370 637 359 693 362M532 420C586 399 637 388 693 391M532 449C586 428 637 417 693 420" stroke="#B8B99E" stroke-width="5" stroke-linecap="round"/>
+  <path d="M470 349V168" stroke="#526C4A" stroke-width="7" stroke-linecap="round"/>
+  <path d="M470 278C412 279 376 244 378 207C433 202 470 229 470 278Z" fill="#92A580"/>
+  <path d="M470 234C522 236 563 202 564 164C507 162 473 185 470 234Z" fill="#526C4A"/>
+  <path d="M470 184C439 170 429 139 441 114C475 125 486 151 470 184Z" fill="#B3C09C"/>
+  <path d="M172 143H286C302 143 315 156 315 172V215C315 231 302 244 286 244H225L191 269V244H172C156 244 143 231 143 215V172C143 156 156 143 172 143Z" fill="#BD7659"/>
+  <path d="M181 181H276M181 204H245" stroke="#FFF4DD" stroke-width="5" stroke-linecap="round"/>
+  <path d="M652 139H763C779 139 792 152 792 168V210C792 226 779 239 763 239H743V264L711 239H652C636 239 623 226 623 210V168C623 152 636 139 652 139Z" fill="#D7C490"/>
+  <circle cx="681" cy="189" r="6" fill="#617254"/><circle cx="708" cy="189" r="6" fill="#617254"/><circle cx="735" cy="189" r="6" fill="#617254"/>
+  <path d="M152 397V425M138 411H166" stroke="#BD7659" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="802" cy="377" r="7" fill="#BD7659"/>
+</svg>
