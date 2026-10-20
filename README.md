@@ -25,6 +25,7 @@ Astro genera cinco páginas informativas en `dist/`, además de las páginas de 
 - Esquema Zod: `src/content/config.ts`; registro moderno de Astro: `src/content.config.ts`.
 - Imágenes: `public/uploads/`, accesibles en `/uploads/`.
 - Editor: `/admin/` en Netlify; en desarrollo, abre `/admin/index.html`.
+- Una sesión editorial ya abierta no redirige la web pública al CMS. Para volver al editor, accede a `/admin/`; la redirección automática solo se registra cuando Identity se inicia sin usuario.
 
 El título se puede cambiar libremente en Decap. Las rutas se basan en el nombre del archivo: cambiar un título no rompe un enlace existente. La fecha principal debe ser una fecha YAML sin comillas (`date: 2026-10-19`); `externalLinks.fechaConsulta` es una cadena entre comillas (`fechaConsulta: "2026-10-19"`). El formateador del editor preserva esta distinción al guardar. Los recursos externos muestran su URL, descripción y fecha de consulta; esta última no garantiza disponibilidad futura. Actualízala solo tras revisar el recurso.
 

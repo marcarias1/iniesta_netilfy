@@ -66,8 +66,12 @@ const active = (href: string) => href === '/' ? Astro.url.pathname === '/' : Ast
     <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script is:inline>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('login', function () {
-          window.location.assign('/admin/');
+        window.netlifyIdentity.on('init', function (user) {
+          if (!user) {
+            window.netlifyIdentity.on('login', function () {
+              window.location.assign('/admin/');
+            });
+          }
         });
       }
     </script>
