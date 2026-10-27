@@ -14,6 +14,6 @@ En el centro de esta transformación se encuentra su emblemático programa *Juga
 
 Aquí os dejamos el enlace de la web de CEBLLOB para que le deis un vistazo: <https://cebllob.cat/>
 
-Avance del próximo artículo:
+En la proxima semana:
 
 ¿Cómo funciona exactamente este registro en el terreno de juego? En nuestro próximo artículo analizaremos en profundidad un caso práctico centrado en las tablas de observación para deportes colectivos, desglosando los criterios que evalúa el árbitro al final de cada partido y cómo la valiosa herramienta de la Tarjeta Verde sirve como catalizador directo para premiar las actitudes ejemplares en vivo.
