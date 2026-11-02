@@ -1,5 +1,5 @@
 ---
-title: "¿REALMENTE PODEMOS MODIFICAR LA PRÁCTICA DEPORTIVA DESDE DENTRO?"
+title: "¿PODEMOS MODIFICAR LA PRÁCTICA DEPORTIVA DESDE DENTRO?"
 description: "Consell Esportiu del Baix Llobregat (CEBLLOB)  es una de las entidades verdaderamente pioneras en transformar la forma de entender, practicar y arbitrar el deporte escolar.\n\n"
 author: "ADRIÁN CAÑADAS DUEÑAS"
 thumbnail: "/uploads/juga-verd-play-768x681.png"
