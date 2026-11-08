@@ -5,7 +5,7 @@ author: "ADRIÁN CAÑADAS DUEÑAS"
 date: 2026-10-27
 category: "Metodologías Activas"
 externalLinks: []
-thumbnail: "/uploads/juga-verd-play-768x681.png"
+thumbnail: "/uploads/captura-de-pantalla-2026-11-08-201637.png"
 ---
 ## El Acta de Valors +3
 
